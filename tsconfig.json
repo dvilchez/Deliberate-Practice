@@ -1,16 +1,19 @@
 {
+  "include": ["src/**/*"],
+  "exclude": ["node_modules/*"],
   "compilerOptions": {
+    "types": [
+      "jest",
+      "node"
+    ],
+    "outDir": "./build/",
+    "noImplicitAny": true,
+    "module": "es6",
     "target": "es5",
     "jsx": "react",
-    "module": "commonjs",
-    "outDir": "./dist/",
+    "allowJs": true,
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true,
-    "types": ["jest", "node"]
-  },
-  "exclude": ["cypress/"]
+    "isolatedModules": false
+  }
 }

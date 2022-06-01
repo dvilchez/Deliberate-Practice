@@ -1,15 +1,5 @@
 {
-  "root": true,
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "rules": {
-    "complexity": ["error", { "max": 7 }],
-    "no-console": "error"
-  }
+  "extends": ["plugin:@typescript-eslint/recommended"]
 }
