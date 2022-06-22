@@ -7,18 +7,16 @@ class Expense {
     this.type = type
     this.amount = amount
   }
-}
 
-type Names = { [key in 'dinner' | 'breakfast' | 'car-rental']: string }
+  public getName(): string {
+    const names: { [key in ExpenseType]: string } = {
+      dinner: 'Dinner',
+      breakfast: 'Breakfast',
+      'car-rental': 'Car Rental',
+    }
 
-const getExpenseName = (key: keyof Names): string => {
-  const names: Names = {
-    dinner: 'Dinner',
-    breakfast: 'Breakfast',
-    'car-rental': 'Car Rental',
+    return names[this.type]
   }
-
-  return names[key]
 }
 
 function printReport(expenses: Expense[]) {
@@ -32,15 +30,15 @@ function printReport(expenses: Expense[]) {
       mealExpenses += expense.amount
     }
 
-    let expenseName = getExpenseName(expense.type)
-
     let mealOverExpensesMarker =
       (expense.type == 'dinner' && expense.amount > 5000) ||
       (expense.type == 'breakfast' && expense.amount > 1000)
         ? 'X'
         : ' '
 
-    process.stdout.write(expenseName + '\t' + expense.amount + '\t' + mealOverExpensesMarker + '\n')
+    process.stdout.write(
+      expense.getName() + '\t' + expense.amount + '\t' + mealOverExpensesMarker + '\n',
+    )
 
     totalExpenses += expense.amount
   }
