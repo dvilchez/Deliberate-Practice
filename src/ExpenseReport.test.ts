@@ -1,4 +1,4 @@
-import { printReport, Expense } from './ExpenseReport'
+import { printReport, Expense, ExpenseType } from './ExpenseReport'
 
 describe(`ExpenseReport`, () => {
   it(`should keep its original behavior`, () => {
@@ -16,5 +16,20 @@ Total Expenses: 5001
 `,
     )
   })
+})
+
+describe('isLimitExcedeed', () => {
+  it.each([
+    ['dinner', 5001, true],
+    ['breakfast', 200, false],
+    ['car-rental', 300, false],
+  ])(
+    `%s with an expense amount of %s should return %s`,
+    (expenseType: ExpenseType, amount: number, expectedResult: boolean) => {
+      const expense = new Expense(expenseType, amount)
+
+      expect(expense.isLimitExcedeed()).toBe(expectedResult)
+    },
+  )
 })
 
