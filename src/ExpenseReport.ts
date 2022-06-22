@@ -1,5 +1,12 @@
 type ExpenseType = 'dinner' | 'breakfast' | 'car-rental'
 
+const Unlimited = 'unlimited'
+const ExpenseLimit: { [key in ExpenseType]: number | 'unlimited' } = {
+  dinner: 5000,
+  breakfast: 1000,
+  'car-rental': Unlimited,
+}
+
 class Expense {
   type: ExpenseType
   amount: number
