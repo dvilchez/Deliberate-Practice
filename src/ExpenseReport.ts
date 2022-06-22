@@ -1,4 +1,5 @@
 type ExpenseType = 'dinner' | 'breakfast' | 'car-rental'
+type ExpenseCategory = 'meal' | 'other'
 
 type Unlimited = undefined
 const EXPENSE_LIMIT: { [key in ExpenseType]: number | Unlimited } = {
@@ -25,6 +26,14 @@ class Expense {
     return names[this.type]
   }
 
+  public getCategory = () => {
+    if (this.type == 'dinner' || this.type == 'breakfast') {
+      return 'meal'
+    } else {
+      return 'other'
+    }
+  }
+
   public isLimitExcedeed(): boolean {
     return this.amount > EXPENSE_LIMIT[this.type]
   }
@@ -37,7 +46,7 @@ function printReport(expenses: Expense[]) {
   process.stdout.write('Expenses: ' + new Date().toISOString().substr(0, 10) + '\n')
 
   for (const expense of expenses) {
-    if (expense.type == 'dinner' || expense.type == 'breakfast') {
+    if (expense.getCategory() === 'meal') {
       mealExpenses += expense.amount
     }
 
