@@ -11,6 +11,8 @@
     "dp": "TZ=CET jest && git add . && git commit -am 'TCR' || git restore .",
     "test": "TZ=CET jest",
     "test:watch": "TZ=CET jest --watch",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix",
     "typecheck": "tsc --noEmit",
     "typecheck:watch": "npm run typecheck -- --watch"
   },
