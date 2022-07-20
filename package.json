@@ -4,7 +4,17 @@
   "description": "",
   "main": "index.js",
   "watch": {
-    "dp": "{tests, src}/*.ts"
+    "dp": {
+      "patterns": [
+        "src",
+        "tests"
+      ],
+      "extensions": "ts",
+      "quiet": true,
+      "legacyWatch": true,
+      "delay": 2500,
+      "runOnChangeOnly": false
+    }
   },
   "scripts": {
     "watch": "npm-watch",
